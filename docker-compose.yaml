@@ -1,0 +1,7 @@
+version: '3'
+services:
+  backsoloautos:
+    container_name: imagebacksoloautos
+    image: imagebacksoloautos:latest
+    ports:
+      - "8001:8001"   

@@ -1,0 +1,29 @@
+
+server:
+ port: 8001
+ 
+springdoc:
+ packagesToScan: com.back.soloautos.controller
+spring:
+  application:
+    name: backsoloautos-api
+
+   # Database Configurations
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://75.102.22.28:3306/urjmbjwq_soloautosdev
+    username: urjmbjwq_soloautos
+    password: .tTvG(!evk0@
+  
+  jpa:
+    properties.hibernate.show_sql: false
+    open-in-view: false
+    generate-ddl: 'true'
+    properties.hibernate.ddl-auto: update
+    
+    
+brands:
+ MERCEDES-BENZ
+ HONDA
+ NISSAN
+ 
