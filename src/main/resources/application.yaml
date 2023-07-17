@@ -11,9 +11,9 @@ spring:
    # Database Configurations
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://75.102.22.28:3306/urjmbjwq_soloautosdev
-    username: urjmbjwq_soloautos
-    password: .tTvG(!evk0@
+    url: jdbc:mysql://75.102.22.28:3306/urjmbjwq_soloautosdev3
+    username: urjmbjwq_soloautosdev3
+    password: Everis.2023
   
   jpa:
     properties.hibernate.show_sql: false

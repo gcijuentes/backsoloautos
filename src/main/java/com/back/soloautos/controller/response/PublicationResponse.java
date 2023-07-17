@@ -2,6 +2,17 @@ package com.back.soloautos.controller.response;
 
 import java.util.List;
 
-public record PublicationResponse(String title, String date, List<ImageResponse> images, VehicleResponse car  ) {
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
+public class PublicationResponse {
+
+	private String title; 
+	private String publicationDate;
+	private List<ImageResponse> images; 
+	private VehicleResponse car;
 }

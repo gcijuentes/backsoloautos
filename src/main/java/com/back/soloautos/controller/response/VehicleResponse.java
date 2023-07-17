@@ -5,6 +5,18 @@ import com.back.soloautos.dto.Brand;
 import lombok.Builder;
 
 @Builder
-public record VehicleResponse (String summary, Integer kilometers, String transmition, int year, Brand brand, String model, String color) {
+public record VehicleResponse (
+		String title,
+		String price,
+		String year,
+		String summary, 
+		Integer kilometers, 
+		String transmission, 
+		Brand brand, 
+		String model, 
+		String color,
+		String city,
+		String url,
+		String images) {
 
 }

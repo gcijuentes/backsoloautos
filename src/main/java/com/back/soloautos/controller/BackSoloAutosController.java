@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.back.soloautos.controller.response.BrandResponse;
 import com.back.soloautos.controller.response.VehicleResponse;
 import com.back.soloautos.entity.Vehicle;
 import com.back.soloautos.service.BrandService;
+import com.back.soloautos.service.PublicationService;
 import com.back.soloautos.service.VehicleService;
 
 import lombok.AllArgsConstructor;
@@ -29,20 +31,22 @@ public class BackSoloAutosController {
 	
 	private final VehicleService vehicleService;
 	
+	
+	
 	@GetMapping("/brands")
-	public List<String> getBrands() {
+	public List<BrandResponse> getBrands() {
 		log.debug("getBrands");
 		return brandService.getBrands();
 	}
 	
-	@GetMapping("/cars")
-	public ResponseEntity<Page<Vehicle>> getCars(
+	@GetMapping("/vehicles")
+	public ResponseEntity<Page<Vehicle>> getVehicles(
 			@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 		
 		Pageable pageable = PageRequest.of(page, size);
 		
-		log.debug("getCars");
+		log.debug("getVehicles");
 		return ResponseEntity.ok(vehicleService.getVehicles(pageable));
 	}
 	
