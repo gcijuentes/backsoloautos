@@ -1,5 +1,7 @@
 package com.back.soloautos.controller.response;
 
+import java.util.List;
+
 import com.back.soloautos.dto.Brand;
 
 import lombok.Builder;
@@ -17,6 +19,6 @@ public record VehicleResponse (
 		String color,
 		String city,
 		String url,
-		String images) {
+		List<ImageResponse> images) {
 
 }

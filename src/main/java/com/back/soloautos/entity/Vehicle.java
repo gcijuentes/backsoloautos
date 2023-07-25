@@ -75,7 +75,9 @@ public class Vehicle implements Serializable {
 	@Column(name = "id_yapo", nullable = true)
 	private String idYapo;
 
-
+	@Column(name = "year", nullable = true)
+	private String year;
+	
 	@Convert(converter = JsonNodeConverter.class)
 	@Column(name = "images_json", columnDefinition = "json")
 	private String imagesJson;
@@ -83,5 +85,9 @@ public class Vehicle implements Serializable {
 	@Convert(converter = JsonNodeConverter.class)
 	@Column(name = "brand_json", columnDefinition = "json")
 	private String brandJson;
+	
+	
+	
+	
 	
 }

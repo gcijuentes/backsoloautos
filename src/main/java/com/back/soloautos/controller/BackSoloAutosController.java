@@ -40,7 +40,7 @@ public class BackSoloAutosController {
 	}
 	
 	@GetMapping("/vehicles")
-	public ResponseEntity<Page<Vehicle>> getVehicles(
+	public ResponseEntity<Page<VehicleResponse>> getVehicles(
 			@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 		
