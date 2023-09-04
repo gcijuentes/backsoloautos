@@ -1,6 +1,5 @@
 package com.back.soloautos.service;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -13,7 +12,6 @@ import com.back.soloautos.controller.response.VehicleResponse;
 import com.back.soloautos.dto.Brand;
 import com.back.soloautos.entity.Vehicle;
 import com.back.soloautos.repository.VehicleRepository;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 
 import lombok.AllArgsConstructor;
 
@@ -53,25 +51,5 @@ public class VehicleService {
 		
 		
 		return new PageImpl<>(vehicleResponse);
-		//return pageVehicle;
-//		VehicleResponse fiat = VehicleResponse.builder()
-//				.brand(Brand.builder().name("Fiat").build())
-//				.model("Palio")
-//				.summary("Descripción del auto")
-//				.color("rojo")
-//				.kilometers(150000)
-//				.transmition("Mecánica")
-//				.build();
-//		
-//		VehicleResponse Tucson = VehicleResponse.builder()
-//				.brand(Brand.builder().name("Fiat").build())
-//				.model("Tucson")
-//				.summary("Descripción del auto")
-//				.color("negro")
-//				.kilometers(120000)
-//				.transmition("Mecánica")
-//				.build();
-//		 
-//		return List.of(fiat,Tucson);
 	}
 }

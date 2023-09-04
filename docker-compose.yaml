@@ -1,7 +1,7 @@
 version: '3'
 services:
   backsoloautos:
-    container_name: imagebacksoloautos
-    image: gcijuentes/soloautos:latest
+    container_name: imagebacksoloautos3
+    image: gcijuentes/soloautos3:latest
     ports:
       - "8001:8001"   

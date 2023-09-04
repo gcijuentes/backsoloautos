@@ -7,8 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class BrandResponse {
-	private String name; 
-	private String imageUrl;
-	private Long count;
+public class SuggestionResponse {
+	private String textResult; 
 }

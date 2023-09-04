@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.back.soloautos.controller.response.BrandResponse;
+import com.back.soloautos.controller.response.SuggestionResponse;
 import com.back.soloautos.controller.response.VehicleResponse;
-import com.back.soloautos.service.BrandService;
-import com.back.soloautos.service.VehicleService;
+import com.back.soloautos.service.SearchService;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/soloautos")
-public class BackSoloAutosController {
+public class SearchController {
 
-	private final BrandService brandService;
-	
-	private final VehicleService vehicleService;
 
-	@GetMapping("/brands")
-	public List<BrandResponse> getBrands() {
-		return brandService.getBrands();
+	private final SearchService searchService;
+
+	@GetMapping("/suggestion")
+	public List<SuggestionResponse> suggestionSearch(
+			@RequestParam(value = "searchText") final String searchText) {
+		return searchService.getSuggestions(searchText);
 	}
 	
-	@GetMapping("/vehicles2")
-	public ResponseEntity<Page<VehicleResponse>> getVehicles(
+	
+	@GetMapping("/vehicles")
+	public ResponseEntity<Page<VehicleResponse>> searchVehicles(
+			@RequestParam(required = false) String searchTerm,
 			@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return ResponseEntity.ok(vehicleService.getVehicles(pageable));
+		return ResponseEntity.ok(searchService.searchVehicles(searchTerm,pageable));
 	}
-	
 }

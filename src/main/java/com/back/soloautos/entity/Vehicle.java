@@ -86,8 +86,15 @@ public class Vehicle implements Serializable {
 	@Column(name = "brand_json", columnDefinition = "json")
 	private String brandJson;
 	
+	@Column(name = "city", nullable = true)
+	private String city;
 	
+	@Column(name = "region", nullable = true)
+	private String region;
 	
+	@Column(name = "marca", nullable = true)
+	private String brand;
 	
-	
+	@Column(name = "modelo", nullable = true)
+	private String model;
 }
