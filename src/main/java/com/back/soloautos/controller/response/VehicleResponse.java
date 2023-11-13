@@ -9,12 +9,12 @@ import lombok.Builder;
 @Builder
 public record VehicleResponse (
 		String title,
-		String price,
+		Long price,
 		String year,
 		String summary, 
 		Integer kilometers, 
 		String transmission, 
-		Brand brand, 
+		BrandResponse brand, 
 		String model, 
 		String color,
 		String city,

@@ -2,6 +2,7 @@ package com.back.soloautos.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.back.soloautos.controller.response.BrandResponse;
 import com.back.soloautos.controller.response.ImageResponse;
 import com.back.soloautos.controller.response.SuggestionResponse;
 import com.back.soloautos.controller.response.VehicleResponse;
@@ -37,9 +39,9 @@ public class SearchService {
 		
 		List<SuggestionResponse> listSuggestionResponse = new ArrayList<>();
 		
-		List<Brand> brandList = brandRepository.findByBrandNameLike(searchText);
-		
 		List<Model> modelList =  modelRepository.findByModelNameLike(searchText);
+		
+		List<Brand> brandList = brandRepository.findByBrandNameLike(searchText);
 		
 		listSuggestionResponse.addAll(brandList.stream()
 		.map(brand -> {
@@ -70,14 +72,20 @@ public class SearchService {
 		
 		List<VehicleResponse> vehicleResponse = pageVehicle.stream().map(
 				vehicle -> {
+					
+					Optional<Model> optModel = modelRepository.findById(vehicle.getModelId());
+					Optional<Brand> optBrand = brandRepository.findById(optModel.get().getBrandId());
+					
+					
 				return VehicleResponse.builder()
 						.city(vehicle.getCity())
 						.color(vehicle.getColor())
-						.model(vehicle.getModel())
+						.model(optModel.get().getModelName())
+						.brand(BrandResponse.builder().name(optBrand.get().getBrandName()).build())
 						.transmission(vehicle.getTransmission())
 						.title(vehicle.getTitle())
 						.url(vehicle.getUrl())
-						.price(vehicle.getPrice().toString())
+						.price(vehicle.getPrice())
 						.year(vehicle.getYear())
 						.images(List.of(
 								ImageResponse.builder()
@@ -88,6 +96,8 @@ public class SearchService {
 								.build()))
 						.build();
 				}).toList();
+		
+		
 		return new PageImpl<>(vehicleResponse);
 	}
 }

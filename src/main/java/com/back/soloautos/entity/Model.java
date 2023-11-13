@@ -11,8 +11,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity(name = "Modelo")
-@Table(name = "Modelo")
+@Entity(name = "Model")
+@Table(name = "model")
 public class Model implements Serializable {
 
 	private static final long serialVersionUID = 8825330910244297293L;
@@ -22,10 +22,10 @@ public class Model implements Serializable {
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@Column(name = "nombre_modelo", nullable = true)
+	@Column(name = "model_name", nullable = true)
 	private String modelName;
 	
-	@Column(name = "id_marca", nullable = true)
-	private String brandId;
+	@Column(name = "brand_id", nullable = true)
+	private Long brandId;
 
 }

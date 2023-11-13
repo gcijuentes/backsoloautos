@@ -7,9 +7,9 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.back.soloautos.controller.response.BrandResponse;
 import com.back.soloautos.controller.response.ImageResponse;
 import com.back.soloautos.controller.response.VehicleResponse;
-import com.back.soloautos.dto.Brand;
 import com.back.soloautos.entity.Vehicle;
 import com.back.soloautos.repository.VehicleRepository;
 
@@ -29,15 +29,14 @@ public class VehicleService {
 				vehicle -> {
 					
 				return VehicleResponse.builder()
-						.brand(Brand.builder().name("Mazda")
-								.url("").build())
+						.brand(BrandResponse.builder().name("Mazda").build())
 						.city("Temuco")
 						.color(vehicle.getColor())
 						.model("CX-5")
 						.transmission(vehicle.getTransmission())
 						.title(vehicle.getTitle())
 						.url(vehicle.getUrl())
-						.price(vehicle.getPrice().toString())
+						.price(vehicle.getPrice())
 						.year(vehicle.getYear())
 						.images(List.of(
 								ImageResponse.builder()
